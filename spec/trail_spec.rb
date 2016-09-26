@@ -32,6 +32,12 @@ describe "Trail" do
       expect(trail.profile_url).to eq("http://www.hikingupward.com/OPH/SunsetRocks/")
     end
 
+    it "adds that new trail to the appropriate collection of trails by state" do
+      expect(Trail.class_variable_get(:@@pa).first.name).to eq("Sunset Rocks")
+      expect(trail.pa).to eq([{:name=>"Sunset Rocks", :state=>"PA", :profile_url=>"http://www.hikingupward.com/OPH/SunsetRocks/"}])
+      expect(trail.va).to eq([{:name=>"Buzzard Hill", :state=>"VA", :profile_url=>"http://www.hikingupward.com/OVH/BuzzardHill/"}, {:name=>"Riverbend", :state=>"VA", :profile_url=>"http://www.hikingupward.com/OVH/RiverBend/"}])
+    end
+
     it "adds that new trail to the Trail class' collection of all existing trails, stored in the `@@all` class variable." do
       expect(Trail.class_variable_get(:@@all).first.name).to eq("Sunset Rocks")
     end
@@ -62,4 +68,5 @@ describe "Trail" do
       expect(Trail.all).to match_array([])
     end
   end
+
 end
