@@ -44,7 +44,7 @@ describe "Scraper" do
   end
 
   describe "#scrape_trail_profile" do
-    it "is a class method that scrapes a trails's profile page and returns a hash of attributes describing an particular trail" do
+    it "is a class method that scrapes a trails's profile page and returns a hash of attributes describing a particular trail" do
       profile_url = "http://www.hikingupward.com/OVH/BelleIsle/"
       scraped_trail = Scraper.scrape_trail_profile(profile_url)
       expect(scraped_trail).to be_a(Hash)
