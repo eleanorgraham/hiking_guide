@@ -34,7 +34,7 @@ describe "Scraper" do
 
   describe "#scrape_trail_list" do
     it "is a class method that scrapes the trail index page and a returns an array of hashes in which each hash represents one trail" do
-      index_url = "./fixtures/student-site/index.html"
+      index_url = "http://www.hikingupward.com/"
       scraped_trails = Scraper.scrape_trail_list(index_url)
       expect(scraped_trails).to be_a(Array)
       expect(scraped_trails.first).to have_key(:state)

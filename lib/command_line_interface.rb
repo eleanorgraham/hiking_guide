@@ -1,4 +1,6 @@
 class CommandLineInteface
+  BASE_PATH = "http://www.hikingupward.com/"
+
   def self.greeting
     puts "           /Y                  "
     puts "          /  Y                 "
