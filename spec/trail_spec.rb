@@ -41,12 +41,6 @@ describe "Trail" do
       expect(Trail.class_variable_get(:@@pa).first.name).to eq("Sunset Rocks")
       expect(Trail.class_variable_get(:@@pa).first.state).to eq("PA")
       expect(Trail.class_variable_get(:@@pa).first.profile_url).to eq("http://www.hikingupward.com/OPH/SunsetRocks/")
-      expect(Trail.class_variable_get(:@@va).first.name).to eq("Buzzard Hill")
-      expect(Trail.class_variable_get(:@@va).first.state).to eq("VA")
-      expect(Trail.class_variable_get(:@@va).first.profile_url).to eq("http://www.hikingupward.com/OVH/BuzzardHill/")
-      expect(Trail.class_variable_get(:@@va).last.name).to eq("Riverbend")
-      expect(Trail.class_variable_get(:@@va).last.state).to eq("VA")
-      expect(Trail.class_variable_get(:@@va).last.profile_url).to eq("http://www.hikingupward.com/OVH/RiverBend/")
     end
 
     it "adds that new trail to the Trail class' collection of all existing trails, stored in the `@@all` class variable." do
@@ -59,6 +53,12 @@ describe "Trail" do
       Trail.class_variable_set(:@@all, [])
       Trail.create_from_collection(trail_index_array)
       expect(Trail.class_variable_get(:@@all).first.name).to eq("Sunset Rocks")
+      expect(Trail.class_variable_get(:@@va).first.name).to eq("Buzzard Hill")
+      expect(Trail.class_variable_get(:@@va).first.state).to eq("VA")
+      expect(Trail.class_variable_get(:@@va).first.profile_url).to eq("http://www.hikingupward.com/OVH/BuzzardHill/")
+      expect(Trail.class_variable_get(:@@va).last.name).to eq("Riverbend")
+      expect(Trail.class_variable_get(:@@va).last.state).to eq("VA")
+      expect(Trail.class_variable_get(:@@va).last.profile_url).to eq("http://www.hikingupward.com/OVH/RiverBend/")
     end
   end
 
