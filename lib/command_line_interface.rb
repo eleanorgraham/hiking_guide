@@ -15,7 +15,6 @@ class CommandLineInteface
   end
 
   def self.add_trail_attributes
-    Trail.reset_all
     Trail.all.each do |trail|
       attributes = Scraper.scrape_trail_profile(trail.profile_url)
       trail.add_trail_attributes(attributes)
@@ -46,30 +45,29 @@ class CommandLineInteface
     puts "(5) West Virginia hikes"
     puts "please enter 1-5:"
     input = gets.strip
-    case input
-    when "1"
+    if input == "1"
       puts "Here is a list of trails in Maryland:"
       state_list(Trail.md)
       state_menu(Trail.md)
-    when "2"
+    elsif input == "2"
       puts "Here is a list of trails in Pennsylvania:"
       state_list(Trail.pa)
       state_menu(Trail.pa)
-    when "3"
+    elsif input == "3"
       puts "Here is a list of trails in North Carolina:"
       state_list(Trail.nc)
       state_menu(Trail.nc)
-    when "4"
+    elsif input == "4"
       puts "Here is a list of trails in Virgini:"
       state_list(Trail.va)
       state_menu(Trail.va)
-    when "5"
+    elsif input == "5"
       puts "Here is a list of trails in West Virginia:"
       state_list(Trail.wv)
       state_menu(Trail.wv)
-    when input.upcase == "ALL TRAILS"
+    elsif input.upcase == "ALL TRAILS"
       display_all_trails
-    when input.upcase == "EXIT"
+    elsif input.upcase == "EXIT"
       puts "Thanks for visiting -- Happy Trails!"
       greeting
     else
@@ -91,8 +89,7 @@ class CommandLineInteface
     puts "Please type the number of any trail you'd like to learn more about"
     puts "Or if you wish to return to the main menu, type 'menu'"
     input = gets.strip
-    case input
-    when input.upcase == "MENU"
+    if input.upcase == "MENU"
       main_menu
     else
       puts "I'm not sure what you mean -- let's see if we can find the trail again!"
