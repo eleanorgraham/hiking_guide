@@ -62,4 +62,13 @@ class Trail
     @@wv
   end
 
+  def self.reset_all
+    self.all.clear
+    self.md.clear
+    self.pa.clear
+    self.nc.clear
+    self.va.clear
+    self.wv.clear
+  end
+
 end

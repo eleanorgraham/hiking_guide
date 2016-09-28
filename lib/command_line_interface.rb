@@ -9,11 +9,13 @@ class CommandLineInteface
   end
 
   def self.make_trails
+    Trail.reset_all
     trails_array = Scraper.scrape_trail_list(BASE_PATH)
     Trail.create_from_collection(trails_array)
   end
 
   def self.add_trail_attributes
+    Trail.reset_all
     Trail.all.each do |trail|
       attributes = Scraper.scrape_trail_profile(trail.profile_url)
       trail.add_trail_attributes(attributes)
@@ -47,18 +49,23 @@ class CommandLineInteface
     case input
     when "1"
       puts "Here is a list of trails in Maryland:"
+      state_list(Trail.md)
       state_menu(Trail.md)
     when "2"
       puts "Here is a list of trails in Pennsylvania:"
+      state_list(Trail.pa)
       state_menu(Trail.pa)
     when "3"
       puts "Here is a list of trails in North Carolina:"
+      state_list(Trail.nc)
       state_menu(Trail.nc)
     when "4"
       puts "Here is a list of trails in Virgini:"
+      state_list(Trail.va)
       state_menu(Trail.va)
     when "5"
       puts "Here is a list of trails in West Virginia:"
+      state_list(Trail.wv)
       state_menu(Trail.wv)
     when input.upcase == "ALL TRAILS"
       display_all_trails
@@ -72,24 +79,25 @@ class CommandLineInteface
     end
   end
 
-  def self.state_menu(state_trails_list)
+  def self.state_list(state_trails_list)
     counter = 1
     state_trails_list.each do |trail|
       puts "(#{counter}) #{trail.name}"
       counter += 1
     end
+  end
+
+  def self.state_menu(state_trails_list)
     puts "Please type the number of any trail you'd like to learn more about"
     puts "Or if you wish to return to the main menu, type 'menu'"
     input = gets.strip
-    while input != "exit"
-      case input
-      when input.upcase == "MENU"
-        main_menu
-      else
-        puts "I'm not sure what you mean -- let's see if we can find the trail again!"
-        puts "<< at any time you can exit by typing 'exit' >>"
-        state_menu
-      end
+    case input
+    when input.upcase == "MENU"
+      main_menu
+    else
+      puts "I'm not sure what you mean -- let's see if we can find the trail again!"
+      puts "<< at any time you can exit by typing 'exit' >>"
+      state_menu(state_trails_list)
     end
   end
 
