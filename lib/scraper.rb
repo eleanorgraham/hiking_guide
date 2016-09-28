@@ -39,7 +39,7 @@ class Scraper
       trail[:elevation_gain] = page.css("td")[reference+8].children[2].text.split.join(" ") : "unknown"
 
     page.css("p") != nil ?
-      trail[:description] = page.css("p").text.split.join(" ") : "unknown"
+      trail[:description] = page.css("p").text.split.join(" ")[0..750].gsub(/\s\w+\s*$/, '...') : "unknown"
 
     trail[:map_pdf_link] = profile_url+("images/Map.pdf")
 

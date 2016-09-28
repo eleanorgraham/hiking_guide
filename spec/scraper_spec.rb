@@ -21,7 +21,7 @@ describe "Scraper" do
     :hiking_time=>"1.0 hours plus a half hour for lunch",
     :elevation_gain=>"55 ft",
     :map_pdf_link=>"http://www.hikingupward.com/OVH/BelleIsle/images/Map.pdf",
-    :description=>"Belle Isle is a deceptively named, family friendly, wheelchair accessible hike in the middle of the James River with the downtown skyline of Richmond, VA visible in the background. If you just walked around and looked only at the river, the trees, the birds, the climbing cliffs, etc, you would certainly agree that it is a “Belle Isle”. On the other hand if you read some of the posted signs and looked around at the evidence of its prior use, you might be transported back to a time when it was not a Belle Isle: a granite quarry pit, a power plant, an iron milling factory, an iron foundry, and the most haunting of all – A Civil War prison camp where over 1,000 Union soldiers died from deprivation."
+    :description=>"Belle Isle is a deceptively named, family friendly, wheelchair accessible hike in the middle of the James River with the downtown skyline of Richmond, VA visible in the background. If you just walked around and looked only at the river, the trees, the birds, the climbing cliffs, etc, you would certainly agree that it is a “Belle Isle”. On the other hand if you read some of the posted signs and looked around at the evidence of its prior use, you might be transported back to a time when it was not a Belle Isle: a granite quarry pit, a power plant, an iron milling factory, an iron foundry, and the most haunting of all – A Civil War prison camp where over 1,000 Union soldiers died from deprivation. From the parking lot, head under the train..."
   }}
 
   let!(:trail_wv_cranny_crow_big_ridge) {{
