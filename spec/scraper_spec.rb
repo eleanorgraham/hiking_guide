@@ -50,13 +50,6 @@ describe "Scraper" do
       expect(scraped_trail).to be_a(Hash)
       expect(scraped_trail).to match(trail_va_belle_isle)
     end
-
-    it "can handle profile pages with symbols in the descriptions" do
-      profile_url = "http://www.hikingupward.com/OMH/BillyGoatTrail/"
-      scraped_trail = Scraper.scrape_trail_profile(profile_url)
-      expect(scraped_trail).to be_a(Hash)
-      expect(scraped_trail).to match(trail_md_billy_goat)
-    end
   end
 
 end
