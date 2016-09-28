@@ -28,11 +28,16 @@ class Scraper
     page = Nokogiri::HTML(open(profile_url))
     trail = {}
     reference = page.css("td").find_index {|td| td.text == "Camping"}
-    trail[:length] = page.css("td")[reference+1].text.split.join(" ")
-    trail[:hiking_time] = page.css("td")[reference+8].children[0].text.split.join(" ")
-    trail[:elevation_gain] = page.css("td")[reference+8].children[2].text.split.join(" ")
+    if page.css("td")[reference+1].text.split.join(" ") != nil
+      trail[:length] = page.css("td")[reference+1].text.split.join(" ")
+    elsif page.css("td")[reference+8].children[0].text.split.join(" ") != nil
+      trail[:hiking_time] = page.css("td")[reference+8].children[0].text.split.join(" ")
+    elsif page.css("td")[reference+8].children[2].text.split.join(" ") != nil
+      trail[:elevation_gain] = page.css("td")[reference+8].children[2].text.split.join(" ")
+    elsif page.css("p").text.split.join(" ") != nil
+      trail[:description] = page.css("p").text.split.join(" ")
+    end
     trail[:map_pdf_link] = profile_url+("images/Map.pdf")
-    trail[:description] = page.css("p").text.split.join(" ")
     trail
   end
 
