@@ -2,11 +2,12 @@ class CommandLineInteface
   BASE_PATH = "http://www.hikingupward.com/"
 
   def self.run
-    greeting
-    main_menu
     make_trails
     add_trail_attributes
-    #display_all_trails
+    while input != "exit"
+      greeting
+      main_menu
+    end
   end
 
   def self.greeting
@@ -22,6 +23,7 @@ class CommandLineInteface
     puts "==============================="
     puts " H I T   T H E   T R A I L S ! "
     puts "==============================="
+    puts "<< at any time you can exit by typing 'exit' >>"
   end
 
   def self.main_menu
