@@ -3,9 +3,10 @@ class CommandLineInteface
 
   def self.run
     greeting
+    main_menu
     make_trails
     add_trail_attributes
-    display_all_trails
+    #display_all_trails
   end
 
   def self.greeting
@@ -21,6 +22,32 @@ class CommandLineInteface
     puts "==============================="
     puts " H I T   T H E   T R A I L S ! "
     puts "==============================="
+  end
+
+  def self.main_menu
+    puts "Where would you like to explore?"
+    puts "(1) Maryland hikes"
+    puts "(2) Pennsylvania hikes"
+    puts "(3) North Carolina hikes"
+    puts "(4) Virginia hikes"
+    puts "(5) West Virginia hikes"
+    puts "please enter 1-5 to get started:"
+    input = gets.strip
+    case input
+    when 1
+      md_menu
+    when 2
+      pa_menu
+    when 3
+      nc_menu
+    when 4
+      va_menu
+    when 5
+      wv_menu
+    else
+      puts "I'm not sure what you mean -- let's see if we can find the trail again!"
+      self.main_menu
+    end
   end
 
   def self.make_trails
