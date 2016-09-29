@@ -12,6 +12,7 @@ class CommandLineInteface
     Trail.reset_all
     trails_array = Scraper.scrape_trail_list(BASE_PATH)
     Trail.create_from_collection(trails_array)
+    Trail.all.uniq
   end
 
   def self.add_trail_attributes
@@ -91,6 +92,9 @@ class CommandLineInteface
     input = gets.strip
     if input.upcase == "MENU"
       main_menu
+    elsif input.upcase == "EXIT"
+      puts "Thanks for visiting -- Happy Trails!"
+      greeting
     else
       puts "I'm not sure what you mean -- let's see if we can find the trail again!"
       puts "<< at any time you can exit by typing 'exit' >>"

@@ -14,7 +14,11 @@ class Trail
   end
 
   def self.create_from_collection(trails_array)
-    trails_array.each {|trail| Trail.new(trail)}
+    trails_array.each do |trail|
+      if Trail.all.include?(trail) == false
+        Trail.new(trail)
+      end
+    end
   end
 
   def add_trail_attributes(attributes_hash)
