@@ -29,15 +29,15 @@ class Trail
     self.all.each do |trail|
       case trail.state
       when "MD"
-        self.md << trail
+        self.md.include?(trail) ? nil : self.md << trail
       when "PA"
-        self.pa << trail
+        self.pa.include?(trail) ? nil : self.pa << trail
       when "NC"
-        self.nc << trail
+        self.nc.include?(trail) ? nil : self.nc << trail
       when "VA"
-        self.va << trail
+        self.va.include?(trail) ? nil : self.va << trail
       when "WV"
-        self.wv << trail
+        self.wv.include?(trail) ? nil : self.wv << trail
       end
     end
   end
@@ -67,12 +67,12 @@ class Trail
   end
 
   def self.reset_all
-    self.all.clear
-    self.md.clear
-    self.pa.clear
-    self.nc.clear
-    self.va.clear
-    self.wv.clear
+    @@all.clear
+    @@md.clear
+    @@pa.clear
+    @@nc.clear
+    @@va.clear
+    @@wv.clear
   end
 
 end
