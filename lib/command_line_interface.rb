@@ -2,9 +2,9 @@ class CommandLineInteface
   BASE_PATH = "http://www.hikingupward.com/"
 
   def self.run
+    greeting
     make_trails
     add_trail_attributes
-    greeting
     main_menu
   end
 
@@ -12,7 +12,7 @@ class CommandLineInteface
     Trail.reset_all
     trails_array = Scraper.scrape_trail_list(BASE_PATH)
     Trail.create_from_collection(trails_array)
-    Trail.all.uniq
+    #Trail.all.uniq
   end
 
   def self.add_trail_attributes
@@ -23,6 +23,12 @@ class CommandLineInteface
   end
 
   def self.greeting
+    hit_the_trails
+    puts "Welcome to this guide of mid Atlantic hiking trails!"
+    puts "Please wait a moment while we gather the trails"
+  end
+
+  def self.hit_the_trails
     puts "           /Y                  "
     puts "          /  Y                 "
     puts "         /    Y   /Y           "
@@ -70,7 +76,7 @@ class CommandLineInteface
       display_all_trails
     elsif input.upcase == "EXIT"
       puts "Thanks for visiting -- Happy Trails!"
-      greeting
+      hit_the_trails
     else
       puts "I'm not sure what you mean -- let's see if we can find the trail again!"
       puts "<< at any time you can exit by typing 'exit' >>"
@@ -94,7 +100,7 @@ class CommandLineInteface
       main_menu
     elsif input.upcase == "EXIT"
       puts "Thanks for visiting -- Happy Trails!"
-      greeting
+      hit_the_trails
     else
       puts "I'm not sure what you mean -- let's see if we can find the trail again!"
       puts "<< at any time you can exit by typing 'exit' >>"
