@@ -3,8 +3,6 @@ class CommandLineInteface
 
   def self.run
     greeting
-    make_trails
-    add_trail_attributes
     main_menu
   end
 
@@ -22,9 +20,29 @@ class CommandLineInteface
   end
 
   def self.greeting
+    puts "Setting up your command line trail guide -"
+    puts "Please wait a minute while we gather the trail details..."
+    sleep(1)
+    puts "         ".light_red.on_red
+    puts "   /Y    ".light_red.on_red
+    puts "  /  Y   ".light_red.on_red
+    puts " /    Y  ".light_red.on_red
+    sleep(1)
+    make_trails
+    puts "getting closer..."
+    puts "              ".light_yellow.on_yellow
+    puts "     /Y       ".light_yellow.on_yellow
+    puts "    /  Y      ".light_yellow.on_yellow
+    puts "   /    Y/Y   ".light_yellow.on_yellow
+    puts "  /     /  Y  ".light_yellow.on_yellow
+    puts " /     /    Y ".light_yellow.on_yellow
+    add_trail_attributes
+    puts "All set!"
+    sleep(1)
     hit_the_trails
-    puts "Welcome to this guide of mid Atlantic hiking trails!"
-    puts "Please wait a minute while we gather the trail details"
+    puts ""
+    puts "Welcome to the mid Atlantic trail guide!"
+    puts ""
   end
 
   def self.hit_the_trails
@@ -117,7 +135,7 @@ class CommandLineInteface
     puts "  elevation gain:".colorize(:black).on_green + " #{trail.elevation_gain}"
     puts "  link to map pdf:".colorize(:black).on_green + " #{trail.map_pdf_link}"
     puts "  trail description:".colorize(:black).on_green + " #{trail.description}"
-    puts "  * * * * * * *  ".colorize(:light_green).on_green
+    puts "  * * * * * * *  ".colorize(:light_green)
     puts "To read more about this trail, please visit #{trail.profile_url}"
     puts "----------------------".colorize(:light_green).on_green
   end
