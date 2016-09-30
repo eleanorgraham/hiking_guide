@@ -119,6 +119,7 @@ class CommandLineInteface
       puts "  trail description:".colorize(:light_blue) + " #{trail.description}"
       puts "----------------------".colorize(:green)
     end
+    main_menu
   end
 
 end
