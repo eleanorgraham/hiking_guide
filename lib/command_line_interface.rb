@@ -25,7 +25,7 @@ class CommandLineInteface
   def self.greeting
     hit_the_trails
     puts "Welcome to this guide of mid Atlantic hiking trails!"
-    puts "Please wait a moment while we gather the trails"
+    puts "Please wait while we gather the trail details"
   end
 
   def self.hit_the_trails
@@ -96,7 +96,12 @@ class CommandLineInteface
     puts "Please type the number of any trail you'd like to learn more about"
     puts "Or if you wish to return to the main menu, type 'menu'"
     input = gets.strip
-    if input.upcase == "MENU"
+    if input.to_i > 0 && input.to_i < state_trails_list.size
+      display_trail_details(state_trails_list[input.to_i-1])
+      puts "Would you like to read about another of these trails? (y/n)"
+      response = gets.strip
+      response.upcase == "Y" ? state_menu(state_trails_list) : main_menu
+    elsif input.upcase == "MENU"
       main_menu
     elsif input.upcase == "EXIT"
       puts "Thanks for visiting -- Happy Trails!"
@@ -108,16 +113,21 @@ class CommandLineInteface
     end
   end
 
+  def self.display_trail_details(trail)
+    puts "#{trail.name.upcase}".colorize(:blue)
+    puts "  state:".colorize(:light_blue) + " #{trail.state}"
+    puts "  length:".colorize(:light_blue) + " #{trail.length}"
+    puts "  hiking time:".colorize(:light_blue) + " #{trail.hiking_time}"
+    puts "  elevation gain:".colorize(:light_blue) + " #{trail.elevation_gain}"
+    puts "  link to map pdf:".colorize(:light_blue) + " #{trail.map_pdf_link}"
+    puts "  trail description:".colorize(:light_blue) + " #{trail.description}"
+    puts "  To read more about this trail, please visit #{trail.profile_url}"
+    puts "----------------------".colorize(:green)
+  end
+
   def self.display_all_trails
     Trail.all.each do |trail|
-      puts "#{trail.name.upcase}".colorize(:blue)
-      puts "  state:".colorize(:light_blue) + " #{trail.state}"
-      puts "  length:".colorize(:light_blue) + " #{trail.length}"
-      puts "  hiking time:".colorize(:light_blue) + " #{trail.hiking_time}"
-      puts "  elevation gain:".colorize(:light_blue) + " #{trail.elevation_gain}"
-      puts "  link to map pdf:".colorize(:light_blue) + " #{trail.map_pdf_link}"
-      puts "  trail description:".colorize(:light_blue) + " #{trail.description}"
-      puts "----------------------".colorize(:green)
+      display_trail_details(trail)
     end
     main_menu
   end
