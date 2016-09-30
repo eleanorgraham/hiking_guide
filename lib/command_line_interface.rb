@@ -12,7 +12,6 @@ class CommandLineInteface
     Trail.reset_all
     trails_array = Scraper.scrape_trail_list(BASE_PATH)
     Trail.create_from_collection(trails_array)
-    #Trail.all.uniq
   end
 
   def self.add_trail_attributes
@@ -25,22 +24,23 @@ class CommandLineInteface
   def self.greeting
     hit_the_trails
     puts "Welcome to this guide of mid Atlantic hiking trails!"
-    puts "Please wait while we gather the trail details"
+    puts "Please wait a minute while we gather the trail details"
   end
 
   def self.hit_the_trails
-    puts "           /Y                  "
-    puts "          /  Y                 "
-    puts "         /    Y   /Y           "
-    puts "        /      Y /  Y          "
-    puts "       /  /Y    /    Y /Y      "
-    puts "      /  /  Y  /      /  Y     "
-    puts "     /  /    Y/    /Y/    Y    "
-    puts "    /  /      Y   /  Y     Y   "
-    puts "_______________________________"
-    puts "==============================="
-    puts " H I T   T H E   T R A I L S ! "
-    puts "==============================="
+    puts "           /Y                  ".light_green.on_green
+    puts "          /  Y                 ".light_green.on_green
+    puts "         /    Y   /Y           ".light_green.on_green
+    puts "        /      Y /  Y          ".light_green.on_green
+    puts "       /  /Y    /    Y /Y      ".light_green.on_green
+    puts "      /  /  Y  /      /  Y     ".light_green.on_green
+    puts "     /  /    Y/    /Y/    Y    ".light_green.on_green
+    puts "    /  /      Y   /  Y     Y   ".light_green.on_green
+    puts "_______________________________".black.on_green
+    puts "===============================".black.on_green
+    puts " H I T   T H E   T R A I L S ! ".light_green.on_green
+    puts "===============================".black.on_green
+    #binding.pry
   end
 
   def self.main_menu
@@ -54,23 +54,18 @@ class CommandLineInteface
     input = gets.strip
     if input == "1"
       puts "Here is a list of trails in Maryland:"
-      state_list(Trail.md)
       state_menu(Trail.md)
     elsif input == "2"
       puts "Here is a list of trails in Pennsylvania:"
-      state_list(Trail.pa)
       state_menu(Trail.pa)
     elsif input == "3"
       puts "Here is a list of trails in North Carolina:"
-      state_list(Trail.nc)
       state_menu(Trail.nc)
     elsif input == "4"
       puts "Here is a list of trails in Virgini:"
-      state_list(Trail.va)
       state_menu(Trail.va)
     elsif input == "5"
       puts "Here is a list of trails in West Virginia:"
-      state_list(Trail.wv)
       state_menu(Trail.wv)
     elsif input.upcase == "ALL TRAILS"
       display_all_trails
@@ -93,6 +88,7 @@ class CommandLineInteface
   end
 
   def self.state_menu(state_trails_list)
+    state_list(state_trails_list)
     puts "Please type the number of any trail you'd like to learn more about"
     puts "Or if you wish to return to the main menu, type 'menu'"
     input = gets.strip
@@ -114,15 +110,16 @@ class CommandLineInteface
   end
 
   def self.display_trail_details(trail)
-    puts "#{trail.name.upcase}".colorize(:blue)
-    puts "  state:".colorize(:light_blue) + " #{trail.state}"
-    puts "  length:".colorize(:light_blue) + " #{trail.length}"
-    puts "  hiking time:".colorize(:light_blue) + " #{trail.hiking_time}"
-    puts "  elevation gain:".colorize(:light_blue) + " #{trail.elevation_gain}"
-    puts "  link to map pdf:".colorize(:light_blue) + " #{trail.map_pdf_link}"
-    puts "  trail description:".colorize(:light_blue) + " #{trail.description}"
-    puts "  To read more about this trail, please visit #{trail.profile_url}"
-    puts "----------------------".colorize(:green)
+    puts "#{trail.name.upcase}".colorize(:black).on_green
+    puts "  state:".colorize(:light_green) + " #{trail.state}"
+    puts "  length:".colorize(:light_green) + " #{trail.length}"
+    puts "  hiking time:".colorize(:light_green) + " #{trail.hiking_time}"
+    puts "  elevation gain:".colorize(:light_green) + " #{trail.elevation_gain}"
+    puts "  link to map pdf:".colorize(:light_green) + " #{trail.map_pdf_link}"
+    puts "  trail description:".colorize(:light_green) + " #{trail.description}"
+    puts "  * * * * * * *".colorize(:light_green)
+    puts "To read more about this trail, please visit #{trail.profile_url}"
+    puts "----------------------".colorize(:black)
   end
 
   def self.display_all_trails
