@@ -40,7 +40,6 @@ class CommandLineInteface
     puts "===============================".black.on_green
     puts " H I T   T H E   T R A I L S ! ".light_green.on_green
     puts "===============================".black.on_green
-    #binding.pry
   end
 
   def self.main_menu
@@ -92,7 +91,7 @@ class CommandLineInteface
     puts "Please type the number of any trail you'd like to learn more about"
     puts "Or if you wish to return to the main menu, type 'menu'"
     input = gets.strip
-    if input.to_i > 0 && input.to_i < state_trails_list.size
+    if input.to_i > 0 && input.to_i <= state_trails_list.size
       display_trail_details(state_trails_list[input.to_i-1])
       puts "Would you like to read about another of these trails? (y/n)"
       response = gets.strip
@@ -110,16 +109,17 @@ class CommandLineInteface
   end
 
   def self.display_trail_details(trail)
-    puts "#{trail.name.upcase}".colorize(:black).on_green
-    puts "  state:".colorize(:light_green) + " #{trail.state}"
-    puts "  length:".colorize(:light_green) + " #{trail.length}"
-    puts "  hiking time:".colorize(:light_green) + " #{trail.hiking_time}"
-    puts "  elevation gain:".colorize(:light_green) + " #{trail.elevation_gain}"
-    puts "  link to map pdf:".colorize(:light_green) + " #{trail.map_pdf_link}"
-    puts "  trail description:".colorize(:light_green) + " #{trail.description}"
-    puts "  * * * * * * *".colorize(:light_green)
+    puts "----------------------".colorize(:light_green).on_green
+    puts " #{trail.name.upcase} ".colorize(:black).on_green
+    puts "  state:".colorize(:black).on_green + " #{trail.state}"
+    puts "  length:".colorize(:black).on_green + " #{trail.length}"
+    puts "  hiking time:".colorize(:black).on_green + " #{trail.hiking_time}"
+    puts "  elevation gain:".colorize(:black).on_green + " #{trail.elevation_gain}"
+    puts "  link to map pdf:".colorize(:black).on_green + " #{trail.map_pdf_link}"
+    puts "  trail description:".colorize(:black).on_green + " #{trail.description}"
+    puts "  * * * * * * *  ".colorize(:light_green).on_green
     puts "To read more about this trail, please visit #{trail.profile_url}"
-    puts "----------------------".colorize(:black)
+    puts "----------------------".colorize(:light_green).on_green
   end
 
   def self.display_all_trails
