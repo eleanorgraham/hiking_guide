@@ -24,18 +24,18 @@ class CommandLineInteface
     puts "Please wait a minute while we gather the trail details..."
     sleep(1)
     puts "         ".light_red.on_red
-    puts "   /Y    ".light_red.on_red
-    puts "  /  Y   ".light_red.on_red
-    puts " /    Y  ".light_red.on_red
+    puts "   /\\    ".light_red.on_red
+    puts "  /  \\   ".light_red.on_red
+    puts " /    \\  ".light_red.on_red
     sleep(1)
     make_trails
     puts "getting closer..."
-    puts "              ".light_yellow.on_yellow
-    puts "     /Y       ".light_yellow.on_yellow
-    puts "    /  Y      ".light_yellow.on_yellow
-    puts "   /    Y/Y   ".light_yellow.on_yellow
-    puts "  /     /  Y  ".light_yellow.on_yellow
-    puts " /     /    Y ".light_yellow.on_yellow
+    puts "               ".light_yellow.on_yellow
+    puts "     /\\        ".light_yellow.on_yellow
+    puts "    /  \\       ".light_yellow.on_yellow
+    puts "   /    \\/\\    ".light_yellow.on_yellow
+    puts "  /     /  \\   ".light_yellow.on_yellow
+    puts " /     /    \\  ".light_yellow.on_yellow
     add_trail_attributes
     puts "All set!"
     sleep(1)
@@ -46,14 +46,14 @@ class CommandLineInteface
   end
 
   def self.hit_the_trails
-    puts "           /Y                  ".light_green.on_green
-    puts "          /  Y                 ".light_green.on_green
-    puts "         /    Y   /Y           ".light_green.on_green
-    puts "        /      Y /  Y          ".light_green.on_green
-    puts "       /  /Y    /    Y /Y      ".light_green.on_green
-    puts "      /  /  Y  /      /  Y     ".light_green.on_green
-    puts "     /  /    Y/    /Y/    Y    ".light_green.on_green
-    puts "    /  /      Y   /  Y     Y   ".light_green.on_green
+    puts "           /\\                  ".light_green.on_green
+    puts "          /  \\                 ".light_green.on_green
+    puts "         /    \\   /\\           ".light_green.on_green
+    puts "        /      \\ /  \\          ".light_green.on_green
+    puts "       /  /\\    /    \\ /\\      ".light_green.on_green
+    puts "      /  /  \\  /      /  \\     ".light_green.on_green
+    puts "     /  /    \\/    /\\/    \\    ".light_green.on_green
+    puts "    /  /      \\   /  \\     \\   ".light_green.on_green
     puts "_______________________________".black.on_green
     puts "===============================".black.on_green
     puts " H I T   T H E   T R A I L S ! ".light_green.on_green
