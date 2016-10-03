@@ -20,11 +20,11 @@ Gem::Specification.new do |spec|
 
   spec.post_install_message = "Thanks for installing! Hit the trails!"
 
-  spec.add_runtime_dependency 'nokogiri'
+  spec.add_runtime_dependency 'nokogiri', '~> 1.6'
   spec.add_runtime_dependency 'colorize', '~> 0.8', '>= 0.8.1'
 
-  spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency 'bundler', '~> 1.12'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'pry', '~> 0.10'
 end
