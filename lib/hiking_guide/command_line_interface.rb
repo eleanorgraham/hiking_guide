@@ -41,7 +41,9 @@ class HikingGuide::CommandLineInteface
     sleep(1)
     hit_the_trails
     puts ""
-    puts "Welcome to the mid Atlantic trail guide!"
+    puts "Welcome to Hiking Guide!".black.on_green
+    puts ""
+    puts "The information in Hiking Guide comes from a volunteer organization called Hiking Upward (http://www.hikingupward.com/). If you find the information useful, please consider volunteering as a Trail Contributer, or donating to the organization."
     puts ""
   end
 
@@ -61,7 +63,7 @@ class HikingGuide::CommandLineInteface
   end
 
   def self.main_menu
-    puts "Where would you like to explore?"
+    puts "Where would you like to explore?".black.on_green
     puts "(1) Maryland hikes"
     puts "(2) Pennsylvania hikes"
     puts "(3) North Carolina hikes"
@@ -70,27 +72,27 @@ class HikingGuide::CommandLineInteface
     puts "please enter 1-5:"
     input = gets.strip
     if input == "1"
-      puts "Here is a list of trails in Maryland:"
+      puts "Here is a list of trails in Maryland:".black.on_green
       state_menu(HikingGuide::Trail.md)
     elsif input == "2"
-      puts "Here is a list of trails in Pennsylvania:"
+      puts "Here is a list of trails in Pennsylvania:".black.on_green
       state_menu(HikingGuide::Trail.pa)
     elsif input == "3"
-      puts "Here is a list of trails in North Carolina:"
+      puts "Here is a list of trails in North Carolina:".black.on_green
       state_menu(HikingGuide::Trail.nc)
     elsif input == "4"
-      puts "Here is a list of trails in Virgini:"
+      puts "Here is a list of trails in Virgini:".black.on_green
       state_menu(HikingGuide::Trail.va)
     elsif input == "5"
-      puts "Here is a list of trails in West Virginia:"
+      puts "Here is a list of trails in West Virginia:".black.on_green
       state_menu(HikingGuide::Trail.wv)
     elsif input.upcase == "ALL TRAILS"
       display_all_trails
     elsif input.upcase == "EXIT"
       exit
     else
-      puts "I'm not sure what you mean -- let's see if we can find the trail again!"
-      puts "<< at any time you can exit by typing 'exit' >>"
+      puts "I'm not sure what you mean -- let's see if we can find the trail again!".black.on_green
+      puts "<< at any time you can exit by typing 'exit' >>".black.on_green
       main_menu
     end
   end
@@ -124,8 +126,8 @@ class HikingGuide::CommandLineInteface
     elsif input.upcase == "EXIT"
       exit
     else
-      puts "I'm not sure what you mean -- let's see if we can find the trail again!"
-      puts "<< at any time you can exit by typing 'exit' >>"
+      puts "I'm not sure what you mean -- let's see if we can find the trail again!".black.on_green
+      puts "<< at any time you can exit by typing 'exit' >>".black.on_green
       state_menu(state_trails_list)
     end
   end
