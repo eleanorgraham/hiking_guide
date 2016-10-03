@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Run: ```hiking_guide``` after installing the gem.
+Run: ```hiking-guide``` after installing the gem.
 
 Follow the prompts to browse through lists of hiking trails by state, all from the comfort of your command line.
 
