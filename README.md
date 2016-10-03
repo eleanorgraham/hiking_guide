@@ -1,8 +1,8 @@
 # HikingGuide
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hiking_guide`. To experiment with that code, run `bin/console` for an interactive prompt.
+Hiking Guide is a CLI Gem that allows users to browse hiking trails in the US mid-Atlantic region. Following the command-line prompts, users can see trail details and get links to maps of trails in Maryland, Pennsylvania, North Carolina, Virginia, and West Virginia.
 
-TODO: Delete this and the text above, and describe your gem
+The information in Hiking Guide comes from a volunteer organization called [Hiking Upward](http://www.hikingupward.com/). If you find the information useful, please consider volunteering as a Trail Contributer, or donating to the organization.
 
 ## Installation
 
@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run: ```hiking_guide``` after installing the gem.
+
+Follow the prompts to browse through lists of hiking trails by state, all from the comfort of your command line.
 
 ## Development
 
@@ -32,10 +34,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hiking_guide. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/eleanorgraham/hiking_guide. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
