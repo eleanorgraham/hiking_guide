@@ -35,7 +35,7 @@ describe "Scraper" do
   describe "#scrape_trail_list" do
     it "is a class method that scrapes the trail index page and a returns an array of hashes in which each hash represents one trail" do
       index_url = "http://www.hikingupward.com/"
-      scraped_trails = Scraper.scrape_trail_list(index_url)
+      scraped_trails = HikingGuide::Scraper.scrape_trail_list(index_url)
       expect(scraped_trails).to be_a(Array)
       expect(scraped_trails.first).to have_key(:state)
       expect(scraped_trails.first).to have_key(:name)
@@ -46,7 +46,7 @@ describe "Scraper" do
   describe "#scrape_trail_profile" do
     it "is a class method that scrapes a trails's profile page and returns a hash of attributes describing a particular trail" do
       profile_url = "http://www.hikingupward.com/OVH/BelleIsle/"
-      scraped_trail = Scraper.scrape_trail_profile(profile_url)
+      scraped_trail = HikingGuide::Scraper.scrape_trail_profile(profile_url)
       expect(scraped_trail).to be_a(Hash)
       expect(scraped_trail).to match(trail_va_belle_isle)
     end

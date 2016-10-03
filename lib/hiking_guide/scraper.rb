@@ -1,6 +1,6 @@
-require 'open-uri'
+#require 'open-uri'
 
-class Scraper
+class HikingGuide::Scraper
 
   def self.scrape_trail_list(list_url)
     page = Nokogiri::HTML(open(list_url))
@@ -16,7 +16,7 @@ class Scraper
       trails.each do |trail|
         trail_array << {
           :name=> trail.children.text,
-          :profile_url=> CommandLineInteface::BASE_PATH+trail.attributes["href"].value,
+          :profile_url=> HikingGuide::CommandLineInteface::BASE_PATH+trail.attributes["href"].value,
           :state=> "#{state}".upcase
           }
       end

@@ -1,4 +1,4 @@
-class CommandLineInteface
+class HikingGuide::CommandLineInteface
   BASE_PATH = "http://www.hikingupward.com/"
 
   def self.run
@@ -7,14 +7,14 @@ class CommandLineInteface
   end
 
   def self.make_trails
-    Trail.reset_all
+    HikingGuide::Trail.reset_all
     trails_array = Scraper.scrape_trail_list(BASE_PATH)
-    Trail.create_from_collection(trails_array)
+    HikingGuide::Trail.create_from_collection(trails_array)
   end
 
   def self.add_trail_attributes
-    Trail.all.each do |trail|
-      attributes = Scraper.scrape_trail_profile(trail.profile_url)
+    HikingGuide::Trail.all.each do |trail|
+      attributes = HikingGuide::Scraper.scrape_trail_profile(trail.profile_url)
       trail.add_trail_attributes(attributes)
     end
   end
@@ -71,19 +71,19 @@ class CommandLineInteface
     input = gets.strip
     if input == "1"
       puts "Here is a list of trails in Maryland:"
-      state_menu(Trail.md)
+      state_menu(HikingGuide::Trail.md)
     elsif input == "2"
       puts "Here is a list of trails in Pennsylvania:"
-      state_menu(Trail.pa)
+      state_menu(HikingGuide::Trail.pa)
     elsif input == "3"
       puts "Here is a list of trails in North Carolina:"
-      state_menu(Trail.nc)
+      state_menu(HikingGuide::Trail.nc)
     elsif input == "4"
       puts "Here is a list of trails in Virgini:"
-      state_menu(Trail.va)
+      state_menu(HikingGuide::Trail.va)
     elsif input == "5"
       puts "Here is a list of trails in West Virginia:"
-      state_menu(Trail.wv)
+      state_menu(HikingGuide::Trail.wv)
     elsif input.upcase == "ALL TRAILS"
       display_all_trails
     elsif input.upcase == "EXIT"
@@ -141,7 +141,7 @@ class CommandLineInteface
   end
 
   def self.display_all_trails
-    Trail.all.each do |trail|
+    HikingGuide::Trail.all.each do |trail|
       display_trail_details(trail)
     end
     main_menu
