@@ -87,8 +87,7 @@ class HikingGuide::CommandLineInteface
     elsif input.upcase == "ALL TRAILS"
       display_all_trails
     elsif input.upcase == "EXIT"
-      puts "Thanks for visiting -- Happy Trails!"
-      hit_the_trails
+      exit
     else
       puts "I'm not sure what you mean -- let's see if we can find the trail again!"
       puts "<< at any time you can exit by typing 'exit' >>"
@@ -113,17 +112,27 @@ class HikingGuide::CommandLineInteface
       display_trail_details(state_trails_list[input.to_i-1])
       puts "Would you like to read about another of these trails? (y/n)"
       response = gets.strip
-      response.upcase == "Y" ? state_menu(state_trails_list) : main_menu
+      if response.upcase == "Y"
+        state_menu(state_trails_list)
+      elsif response.upcase == "EXIT"
+        exit
+      else
+        main_menu
+      end
     elsif input.upcase == "MENU"
       main_menu
     elsif input.upcase == "EXIT"
-      puts "Thanks for visiting -- Happy Trails!"
-      hit_the_trails
+      exit
     else
       puts "I'm not sure what you mean -- let's see if we can find the trail again!"
       puts "<< at any time you can exit by typing 'exit' >>"
       state_menu(state_trails_list)
     end
+  end
+
+  def self.exit
+    puts "Thanks for visiting -- Happy Trails!"
+    hit_the_trails
   end
 
   def self.display_trail_details(trail)
