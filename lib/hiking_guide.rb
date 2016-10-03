@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'pry'
 require 'nokogiri'
+require 'colorize'
 
 require_relative "hiking_guide/version"
 require_relative "hiking_guide/scraper"

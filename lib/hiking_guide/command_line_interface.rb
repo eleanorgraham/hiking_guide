@@ -8,7 +8,7 @@ class HikingGuide::CommandLineInteface
 
   def self.make_trails
     HikingGuide::Trail.reset_all
-    trails_array = Scraper.scrape_trail_list(BASE_PATH)
+    trails_array = HikingGuide::Scraper.scrape_trail_list(BASE_PATH)
     HikingGuide::Trail.create_from_collection(trails_array)
   end
 
@@ -23,19 +23,19 @@ class HikingGuide::CommandLineInteface
     puts "Setting up your command line trail guide -"
     puts "Please wait a minute while we gather the trail details..."
     sleep(1)
-    puts "         ".light_red.on_red
-    puts "   /\\    ".light_red.on_red
-    puts "  /  \\   ".light_red.on_red
-    puts " /    \\  ".light_red.on_red
+    puts "    /\\      ".light_red.on_red
+    puts "   /  \\     ".light_red.on_red
+    puts "  /    \\/\\  ".light_red.on_red
+    puts " /     /  \\ ".light_red.on_red
     sleep(1)
     make_trails
     puts "getting closer..."
-    puts "               ".light_yellow.on_yellow
-    puts "     /\\        ".light_yellow.on_yellow
-    puts "    /  \\       ".light_yellow.on_yellow
-    puts "   /    \\/\\    ".light_yellow.on_yellow
-    puts "  /     /  \\   ".light_yellow.on_yellow
-    puts " /     /    \\  ".light_yellow.on_yellow
+    puts "          /\\     ".light_yellow.on_yellow
+    puts "     /\\  /  \\    ".light_yellow.on_yellow
+    puts "    /  \\/    \\   ".light_yellow.on_yellow
+    puts "   /    \\/\\   \\  ".light_yellow.on_yellow
+    puts "  /     /  \\   \\ ".light_yellow.on_yellow
+    puts " /     /    \\   \\".light_yellow.on_yellow
     add_trail_attributes
     puts "All set!"
     sleep(1)
