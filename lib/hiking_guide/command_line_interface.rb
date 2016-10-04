@@ -12,8 +12,8 @@ class HikingGuide::CommandLineInteface
     HikingGuide::Trail.create_from_collection(trails_array)
   end
 
-  def self.add_trail_attributes
-    HikingGuide::Trail.all.each do |trail|
+  def self.add_trail_attributes(state)
+    state.each do |trail|
       attributes = HikingGuide::Scraper.scrape_trail_profile(trail.profile_url)
       trail.add_trail_attributes(attributes)
     end
@@ -36,7 +36,7 @@ class HikingGuide::CommandLineInteface
     puts "   /    \\/\\   \\  ".light_yellow.on_yellow
     puts "  /     /  \\   \\ ".light_yellow.on_yellow
     puts " /     /    \\   \\".light_yellow.on_yellow
-    add_trail_attributes
+    sleep(1)
     puts "All set!"
     sleep(1)
     hit_the_trails
@@ -63,28 +63,34 @@ class HikingGuide::CommandLineInteface
   end
 
   def self.main_menu
+    puts "* At any time you can exit by typing 'exit' *".black.on_green
     puts "Where would you like to explore?".black.on_green
     puts "(1) Maryland hikes"
     puts "(2) Pennsylvania hikes"
     puts "(3) North Carolina hikes"
     puts "(4) Virginia hikes"
     puts "(5) West Virginia hikes"
-    puts "please enter 1-5:"
+    puts "please enter 1-5:".black.on_green
     input = gets.strip
     if input == "1"
       puts "Here is a list of trails in Maryland:".black.on_green
+      add_trail_attributes(HikingGuide::Trail.md)
       state_menu(HikingGuide::Trail.md)
     elsif input == "2"
       puts "Here is a list of trails in Pennsylvania:".black.on_green
+      add_trail_attributes(HikingGuide::Trail.pa)
       state_menu(HikingGuide::Trail.pa)
     elsif input == "3"
       puts "Here is a list of trails in North Carolina:".black.on_green
+      add_trail_attributes(HikingGuide::Trail.nc)
       state_menu(HikingGuide::Trail.nc)
     elsif input == "4"
-      puts "Here is a list of trails in Virgini:".black.on_green
+      puts "Here is a list of trails in Virginia:".black.on_green
+      add_trail_attributes(HikingGuide::Trail.va)
       state_menu(HikingGuide::Trail.va)
     elsif input == "5"
       puts "Here is a list of trails in West Virginia:".black.on_green
+      add_trail_attributes(HikingGuide::Trail.wv)
       state_menu(HikingGuide::Trail.wv)
     elsif input.upcase == "ALL TRAILS"
       display_all_trails
@@ -107,12 +113,13 @@ class HikingGuide::CommandLineInteface
 
   def self.state_menu(state_trails_list)
     state_list(state_trails_list)
-    puts "Please type the number of any trail you'd like to learn more about"
-    puts "Or if you wish to return to the main menu, type 'menu'"
+    puts "Please type the number of any trail you'd like to learn more about".black.on_green
+    puts "To return to the main menu, type 'menu'"
+    puts "To exit completely, type 'exit'"
     input = gets.strip
     if input.to_i > 0 && input.to_i <= state_trails_list.size
       display_trail_details(state_trails_list[input.to_i-1])
-      puts "Would you like to read about another of these trails? (y/n)"
+      puts "Would you like to read about another trail in this state? (y/n)"
       response = gets.strip
       if response.upcase == "Y"
         state_menu(state_trails_list)
