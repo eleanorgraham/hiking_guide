@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    hiking_guide (0.1.0)
+    hiking_guide (0.1.1)
       colorize (~> 0.8, >= 0.8.1)
-      nokogiri (~> 1.6)
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
@@ -43,7 +43,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.12)
   hiking_guide!
-  pry (~> 0.10)
+  pry
   rake (~> 10.0)
   rspec (~> 3.0)
 
