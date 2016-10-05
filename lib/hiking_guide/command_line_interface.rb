@@ -121,10 +121,18 @@ class HikingGuide::CommandLineInteface
       response = gets.strip
       if response.upcase == "Y"
         state_menu(state_trails_list)
-      elsif response.upcase == "EXIT"
+      elsif response.upcase == "N"
+        main_menu
+      elsif input.upcase == "MENU"
+        main_menu
+      elsif input.upcase == "EXIT"
         exit
       else
-        main_menu
+        puts "I'm not sure what you mean -- let's see if we can find the trail again!".black.on_green
+        puts "<< at any time you can exit by typing 'exit' >>".black.on_green
+        sleep(1)
+        puts "Here are the #{trail.state} trails again:".black.on_green
+        state_menu(state_trails_list)
       end
     elsif input.upcase == "MENU"
       main_menu
