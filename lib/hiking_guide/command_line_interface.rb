@@ -159,6 +159,8 @@ class HikingGuide::CommandLineInteface
 
   def self.display_all_trails
     HikingGuide::Trail.all.each do |trail|
+      attributes = HikingGuide::Scraper.scrape_trail_profile(trail.profile_url)
+      trail.add_trail_attributes(attributes)
       display_trail_details(trail)
     end
     main_menu
