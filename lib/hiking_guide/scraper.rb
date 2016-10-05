@@ -39,7 +39,7 @@ class HikingGuide::Scraper
       trail[:elevation_gain] = page.css("td")[reference+8].children[2].text.split.join(" ") : "unknown"
 
     page.css("p") != nil ?
-      trail[:description] = clean_description(page).join(" ")[0..750].gsub(/\s\w+\s*$/, '...') : "unknown"
+      trail[:description] = clean_description(page).join(" ").split.join(" ")[0..750].gsub(/\s\w+\s*$/, '...') : "unknown"
 
     trail[:map_pdf_link] = profile_url+("images/Map.pdf")
 
