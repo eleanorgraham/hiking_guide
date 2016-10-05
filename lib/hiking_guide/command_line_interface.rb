@@ -43,7 +43,7 @@ class HikingGuide::CommandLineInteface
     puts ""
     puts "Welcome to Hiking Guide!".black.on_green
     puts ""
-    puts "Access all of the trail details from HikingUpward without leaving the comfort of the command line!"
+    puts "Access trail details from HikingUpward without leaving the comfort of the command line!"
     puts ""
   end
 
@@ -74,23 +74,18 @@ class HikingGuide::CommandLineInteface
     input = gets.strip
     if input == "1"
       puts "Here is a list of trails in Maryland:".black.on_green
-      add_trail_attributes(HikingGuide::Trail.md)
       state_menu(HikingGuide::Trail.md)
     elsif input == "2"
       puts "Here is a list of trails in Pennsylvania:".black.on_green
-      add_trail_attributes(HikingGuide::Trail.pa)
       state_menu(HikingGuide::Trail.pa)
     elsif input == "3"
       puts "Here is a list of trails in North Carolina:".black.on_green
-      add_trail_attributes(HikingGuide::Trail.nc)
       state_menu(HikingGuide::Trail.nc)
     elsif input == "4"
       puts "Here is a list of trails in Virginia:".black.on_green
-      add_trail_attributes(HikingGuide::Trail.va)
       state_menu(HikingGuide::Trail.va)
     elsif input == "5"
       puts "Here is a list of trails in West Virginia:".black.on_green
-      add_trail_attributes(HikingGuide::Trail.wv)
       state_menu(HikingGuide::Trail.wv)
     elsif input.upcase == "ALL TRAILS"
       display_all_trails
@@ -118,8 +113,11 @@ class HikingGuide::CommandLineInteface
     puts "To exit completely, type 'exit'"
     input = gets.strip
     if input.to_i > 0 && input.to_i <= state_trails_list.size
-      display_trail_details(state_trails_list[input.to_i-1])
-      puts "Would you like to read about another trail in this state? (y/n)"
+      trail = state_trails_list[input.to_i-1]
+      attributes = HikingGuide::Scraper.scrape_trail_profile(trail.profile_url)
+      trail.add_trail_attributes(attributes)
+      display_trail_details(trail)
+      puts "Would you like to read about another trail in #{trail.state}? (y/n)"
       response = gets.strip
       if response.upcase == "Y"
         state_menu(state_trails_list)
