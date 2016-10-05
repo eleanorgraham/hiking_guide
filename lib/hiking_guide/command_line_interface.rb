@@ -43,7 +43,7 @@ class HikingGuide::CommandLineInteface
     puts ""
     puts "Welcome to Hiking Guide!".black.on_green
     puts ""
-    puts "The information in Hiking Guide comes from a volunteer organization called Hiking Upward (http://www.hikingupward.com/). If you find the information useful, please consider volunteering as a Trail Contributer, or donating to the organization."
+    puts "Access all of the trail details from HikingUpward without leaving the comfort of the command line!"
     puts ""
   end
 
@@ -140,7 +140,8 @@ class HikingGuide::CommandLineInteface
   end
 
   def self.exit
-    puts "Thanks for visiting -- Happy Trails!"
+    puts "Thanks for visiting -- Happy Trails!".black.on_green
+    puts "The information in Hiking Guide comes from a volunteer organization called HikingUpward (http://www.hikingupward.com/). If you find the information useful, please consider volunteering as a Trail Contributer, or donating to the organization."
     hit_the_trails
   end
 
