@@ -39,11 +39,21 @@ class HikingGuide::Scraper
       trail[:elevation_gain] = page.css("td")[reference+8].children[2].text.split.join(" ") : "unknown"
 
     page.css("p") != nil ?
-      trail[:description] = page.css("p").text.split.join(" ")[0..750].gsub(/\s\w+\s*$/, '...') : "unknown"
+      trail[:description] = clean_description(page).join(" ")[0..750].gsub(/\s\w+\s*$/, '...') : "unknown"
 
     trail[:map_pdf_link] = profile_url+("images/Map.pdf")
 
     trail
+  end
+
+  def self.clean_description(page)
+    paragraphs = []
+    page.css("p").each do |paragraph|
+      paragraphs << paragraph.text
+    end
+    paragraphs.delete_if {|p| p.include? ("Printable Topo Hike Map")}
+    paragraphs.delete_if {|p| p.include? ("(<!--")}
+    paragraphs
   end
 
 end
